@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟vue中发布-订阅模式</title>
+</head>
+
+<body>
+    <!-- 
+        vue中自定义事件是发布订阅模式 
+        发布订阅模式(事件总线EventBus)有三个点：
+         - 事件注册
+         - 消息中心
+         - 事件发送
+    -->
+    <script>
+        class Emitter {
+            constructor() {
+                let em = Object.create(null)
+            }
+
+            on(eventType, handler) {
+                em[eventType] = em[eventType] || [];
+                em[eventType].push(handler)
+            }
+
+            emit(eventType) {
+                if (em[eventType]) {
+                    em[eventType].forEach(handler => {
+                        handler()
+                    });
+                }
+            }
+        }
+
+        let em = new Emitter()
+        em.on('click',()=>console.log('click 00000000'))
+        em.on('click',()=>console.log('click 11111111'))
+        em.on('click',()=>console.log('click 22222222'))
+        em.emit('cc')
+        em.emit('click')
+    </script>
+
+
+
+</body>
+
+</html>
