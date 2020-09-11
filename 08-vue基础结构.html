@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue 基础结构</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>插值表达式</h1>
+        <h3>{{ msg }}</h3>
+        <h3>{{ count }}</h3>
+
+        <h1>v-text</h1>
+        <div v-text="msg"></div>
+        <h1>v-model</h1>
+        <input type="text" v-model="msg">
+        <input type="text" v-model="count">
+        <h1>text-obj-reactive</h1>
+        <div>{{msg}} | {{msg.name}}</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                msg: "hello world",
+                count: 20,
+            }
+        });
+        setTimeout(() => {
+            vm.msg = { name: "cai", age: "xxx" }
+        }, 5000);
+    </script>
+</body>
+
+</html>
