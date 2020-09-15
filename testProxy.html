@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proxy使用</title>
+</head>
+
+<body>
+    <script>
+        console.log("aaa")
+        console.log('[LifeCycle] before load %c%s', 'color: green;', '%c%s方式实现带颜色的文字')
+        let mconsole = {
+            log(content) {
+                console.log('%c%s', 'color:green;', Array.from(arguments).join(','))
+            },
+            error(error) {
+                console.log('%c%s', 'color:red;', Array.from(arguments).join(','))
+            }
+
+        }
+        mconsole.error('a', 'b', 123);
+    </script>
+    <script>
+        mconsole.log('a', 'b', 123);
+    </script>
+</body>
+
+</html>
